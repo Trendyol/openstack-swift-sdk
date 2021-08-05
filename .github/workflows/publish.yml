@@ -15,8 +15,6 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@trendyol'
       - run: npm install
-      - run: npm tsc
-      - run: npm build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.TY_TOKEN }}

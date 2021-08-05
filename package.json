@@ -1,5 +1,5 @@
 {
-  "name": "openstack-swift-sdk",
+  "name": "@trendyol/openstack-swift-sdk",
   "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
@@ -21,15 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Trendyol/openstack-swift-sdk.git"
+    "url": "git+https://github.com/trendyol/openstack-swift-sdk.git"
   },
   "keywords": [],
   "author": "Oğuzhan EREN <oguzh4n@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Trendyol/openstack-swift-sdk.git"
+    "url": "https://github.com/trendyol/openstack-swift-sdk.git"
   },
-  "homepage": "https://github.com/Trendyol/openstack-swift-sdk#readme",
+  "homepage": "https://github.com/trendyol/openstack-swift-sdk#readme",
   "devDependencies": {
     "@types/jest": "^25.1.0",
     "@types/node": "^14.14.41",

@@ -48,7 +48,7 @@
   "dependencies": {
     "agentkeepalive": "^4.1.4",
     "axios": "^0.21.1",
-    "axios-cached-dns-resolve": "^2.0.3",
+    "axios-cached-dns-resolve": "3.0.4",
     "file-type": "^16.3.0"
   }
 }

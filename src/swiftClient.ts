@@ -12,12 +12,13 @@ import {
   UploadOptions,
   UploadResponse,
 } from "./types";
-import { UrlBuilder, detectMimeTypeFromStream } from "./utils";
+import { UrlBuilder } from "./utils";
 import { Readable as ReadableStream } from "stream";
 
 export class SwiftClient {
   private authService: AuthService;
   private readonly client: HttpClient;
+
   constructor(private configuration: SwiftClientConfiguration) {
     this.authService = new AuthService(configuration);
     this.client = new HttpClient(configuration.swiftEndpoint);
@@ -37,7 +38,7 @@ export class SwiftClient {
   ): Promise<NotFound | DownloadResponse> {
     const headers = await this.buildHeaders();
     const fullPath = this.buildFullPath(container, path);
-    const response = await this.client.get(encodeURIComponent(fullPath), {
+    const response = await this.client.get(fullPath, {
       responseType: "stream",
       headers,
     });
@@ -133,11 +134,13 @@ export class SwiftClient {
   ): Promise<UploadResponse> {
     options = new UploadOptions(options);
     const objectHeaders = options.headers;
+
     if (options.ttl) {
       objectHeaders["x-delete-after"] = options.ttl.toString();
     }
-    const mimetype =
-      options.mimetype || (await detectMimeTypeFromStream(stream))?.mime || "";
+
+    const mimetype = options.mimetype || "";
+
     const headers = await this.buildHeaders({
       ...objectHeaders,
       "Content-Type": mimetype,
@@ -146,6 +149,7 @@ export class SwiftClient {
       throw new Error("available container not found!");
     }
     const fullPath = this.buildFullPath(container, path);
+
     await this.client.put(fullPath, stream, {
       headers,
     });

@@ -1,11 +1,8 @@
-import { fromStream, FileTypeResult } from "file-type";
-import { Readable as ReadableStream } from "stream";
-
-export function detectMimeTypeFromStream(
+/* export async function detectMimeTypeFromStream(
   stream: ReadableStream
-): Promise<FileTypeResult | undefined> {
-  return fromStream(stream);
-}
+): Promise<ReadableStream & { readonly fileType?: FileType.FileTypeResult | undefined; }> {
+  return await FileType.stream(stream)
+} */ // TO-DO (mert.bilgic) Add correctly implementation for that.
 
 function DefaultUndefinedValueFilter(val: any, type: string): boolean {
   return type !== "undefined";

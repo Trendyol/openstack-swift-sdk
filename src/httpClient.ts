@@ -1,18 +1,16 @@
-import * as Agentkeepalive from "agentkeepalive";
-import * as axiosCachingDns from "axios-cached-dns-resolve";
+import Agentkeepalive from "agentkeepalive";
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
 
 export class HttpClient {
   private readonly client: AxiosInstance;
   constructor(baseUrl: string, defaultHeaders?: any) {
-    const agent: any = Agentkeepalive;
-    const keepAliveAgent = new agent({
+    const keepAliveAgent = new Agentkeepalive({
       maxSockets: 1000,
       maxFreeSockets: 100,
       timeout: 60000,
       freeSocketTimeout: 30000, // free socket keepalive for 30 seconds
     });
-    const sslKeepAliveAgent = new agent.HttpsAgent({
+    const sslKeepAliveAgent = new Agentkeepalive.HttpsAgent({
       maxSockets: 1000,
       maxFreeSockets: 100,
       timeout: 60000,
@@ -24,11 +22,10 @@ export class HttpClient {
       baseURL: baseUrl,
       headers: defaultHeaders,
       validateStatus: this.validateStatusCode,
-      maxContentLength: 10 * 1024 * 1024 * 1024,
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
       timeout: 1000 * 60 * 1, // one minute,
     });
-    axiosCachingDns.config.dnsTtlMs = 60 * 1000 * 5;
-    axiosCachingDns.registerInterceptor(this.client);
   }
 
   get<T = any, R = AxiosResponse<T>>(

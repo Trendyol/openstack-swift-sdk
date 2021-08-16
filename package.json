@@ -1,6 +1,6 @@
 {
   "name": "@trendyol-js/openstack-swift-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -48,7 +48,7 @@
   "dependencies": {
     "agentkeepalive": "^4.1.4",
     "axios": "^0.21.1",
-    "axios-cached-dns-resolve": "^2.0.3",
-    "file-type": "^16.3.0"
+    "axios-cached-dns-resolve": "0.5.2",
+    "file-type": "16.5.3"
   }
 }

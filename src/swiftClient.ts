@@ -156,6 +156,41 @@ export class SwiftClient {
     return new UploadResponse(fullPath);
   }
 
+  public async copy(
+    container: string,
+    path: string,
+    destinationContainer: string,
+    destinationPath: string
+  ): Promise<boolean> {
+    if (!container) {
+      throw new Error("available container not found!");
+    }
+
+    const headers = await this.buildHeaders({
+      "X-Copy-From": "/" + container + "/" + path,
+      "Content-Length": 0,
+    });
+
+    const fullPath = this.buildFullPath(destinationContainer, destinationPath);
+
+    await this.client.put(fullPath, "", {
+      headers,
+    });
+
+    return true;
+  }
+
+  public async delete(container: string, path: string): Promise<boolean> {
+    const headers = await this.buildHeaders();
+
+    if (!container) {
+      throw new Error("available container not found!");
+    }
+    const fullPath = this.buildFullPath(container, path);
+    await this.client.delete(fullPath, { headers });
+    return true;
+  }
+
   private convertHeaderObjectToArray(
     headers: HeadersObject,
     filter: ((key: string, value: string) => boolean) | undefined = undefined

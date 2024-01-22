@@ -67,7 +67,9 @@ export class SwiftClient {
     }
     const responseHeaders = response.headers;
     return new ContainerMetaResponse({
-      headers: this.convertHeaderObjectToArray(response.headers),
+      headers: this.convertHeaderObjectToArray(
+        response.headers as HeadersObject
+      ),
       size: responseHeaders["content-length"],
       lastModified: responseHeaders["last-modified"],
     });
@@ -88,7 +90,9 @@ export class SwiftClient {
     const responseHeaders = response.headers;
     return new ObjectMetaResponse({
       fullPath: fullPath,
-      headers: this.convertHeaderObjectToArray(response.headers),
+      headers: this.convertHeaderObjectToArray(
+        response.headers as HeadersObject
+      ),
       size: responseHeaders["content-length"],
       lastModified: responseHeaders["last-modified"],
       contentType: responseHeaders["content-type"],

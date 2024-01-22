@@ -43,11 +43,11 @@
     "lint-staged": "^10.0.9",
     "prettier": "^2.0.2",
     "ts-jest": "^25.1.0",
-    "typescript": "^3.7.5"
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "agentkeepalive": "^4.1.4",
-    "axios": "^0.21.1",
+    "axios": "^1.0.0",
     "axios-cached-dns-resolve": "0.5.2",
     "file-type": "^16.5.4"
   }

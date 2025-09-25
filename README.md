@@ -1,3 +1,5 @@
+
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Trendyol/openstack-swift-sdk/badge)](https://scorecard.dev/viewer/?uri=github.com/Trendyol/openstack-swift-sdk)
 # Openstack Swift SDK
 
 Welcome to the Openstack Swift SDK! This SDK allows you to interact with Openstack Swift, a highly available, distributed, and consistent object storage system. With this SDK, you can easily manage and manipulate your data stored in Openstack Swift.
